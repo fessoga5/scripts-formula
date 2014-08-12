@@ -9,5 +9,5 @@
     - user: root
     - dir_mode: 2755
     - file_mode: '0755'
-    - source: salt://scripts/hosts/{{ pillar['scripts'] }}
+    - source: salt://{{pillar['scripts']['path_dir']}}/{{ pillar['scripts']['hosts'] }}
     - include_empty: True
