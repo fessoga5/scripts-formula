@@ -1,5 +1,7 @@
 # vim : sts=2 ts=2 sw=2 et ai
+# DEFAULT VALUES
 scripts:
-  - path_dir: {{path_to_dir_scripts}}
-  - hosts:
-    - {{hostname}}
+  hostdir: /usr/scripts
+  saldir: /scripts/hosts
+  hosts:
+    - grains.host           
