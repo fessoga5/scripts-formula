@@ -8,11 +8,11 @@
 {%- set script_dir_host = salt['pillar.get']('scripts:hostdir','/usr/scripts') -%}
 {%- set script_dir_salt = salt['pillar.get']('scripts:saltdir','/hosts_scripts') -%}
 {% for item in salt['pillar.get']('scripts:hosts',[hostn]) %}
-{{script_dir_host}}/{{item}}:
+{{script_dir_host}}:
   file.recurse:
     - user: root
     - dir_mode: 2755
     - file_mode: '0755'
-    - source: salt:/{{script_dir_salt}}{{item}}
+    - source: salt:/{{script_dir_salt}}/{{item}}
     - include_empty: True
 {%- endfor -%}
