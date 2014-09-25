@@ -5,9 +5,9 @@
 
 # папка scripts
 {%- set hostn = grains['host'] -%}
-{%- set script_dir_host = salt['pillar.get']('scripts:hostdir','/usr/scripts') -%}
+{%- set script_dir_host = salt['pillar.get']('scripts:hostdir','/usr/scripts/') -%}
 {%- set script_dir_salt = salt['pillar.get']('scripts:saltdir','/hosts_scripts') -%}
-{% for item in salt['pillar.get']('scripts:hosts',[hostn]) %}
+{% for item in salt['pillar.get']('scripts:hosts',[""]) %}
 {{script_dir_host}}{{item}}:
   file.recurse:
     - user: root
