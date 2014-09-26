@@ -3,5 +3,9 @@
 scripts:
   hostdir: /usr/scripts
   saldir: /scripts/hosts
+  # for every that scripts will be created folder by their name in hostdor
   hosts:
+    # list required directories from saldir
     - grains.host           
+  # scripts that will be upload drectly to hostdir directory
+  bare: barescripts
