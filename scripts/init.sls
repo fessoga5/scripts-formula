@@ -10,9 +10,10 @@
 {% for item in salt['pillar.get']('scripts:hosts',[hostn]) %}
 {{script_dir_host}}/{{item}}:
   file.recurse:
-    - user: root
-    - dir_mode: 2755
-    - file_mode: '0755'
+    - user: {{ salt['pillar.get']('scripts:user','root') }}
+    - group: {{ salt['pillar.get']('scripts:user','group') }}
+    - dir_mode: {{ salt['pillar.get']('scripts:dirmod','2755') }} 
+    - file_mode: {{ salt['pillar.get']('scripts:filemod','0755') }} 
     - source: salt:/{{script_dir_salt}}/{{item}}
     - include_empty: True
 {%- endfor -%}
@@ -21,9 +22,10 @@
 {% if bare_scripts %}
 {{script_dir_host}}:
   file.recurse:
-    - user: root
-    - dir_mode: 2755
-    - file_mode: '0755'
+    - user: {{ salt['pillar.get']('scripts:user','root') }} 
+    - group: {{ salt['pillar.get']('scripts:user','group') }}
+    - dir_mode: {{ salt['pillar.get']('scripts:dirmod','2755') }} 
+    - file_mode: {{ salt['pillar.get']('scripts:filemod','0755') }} 
     - source: salt:/{{script_dir_salt}}/{{bare_scripts}}
     - include_empty: True
 {%- endif -%}
